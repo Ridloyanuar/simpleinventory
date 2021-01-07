@@ -26,26 +26,34 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/user/new', [UserController::class, 'userNew']);
     Route::get('/user/all', [UserController::class, 'userAll']);
     Route::post('/user/store', [UserController::class, 'userStore']);
+    Route::delete('/user/delete/{id}', [UserController::class, 'userDelete']);
+    Route::put('/user/update/{id}', [UserController::class, 'userUpdate']);
+    Route::get('/user/edit/{id}', [UserController::class, 'userEdit']);
 
 
     //Pelanggan
     Route::get('/pelanggan/new', [PelangganController::class, 'pelangganNew']);
     Route::get('/pelanggan/all', [PelangganController::class, 'pelangganAll']);
     Route::post('/pelanggan/store', [PelangganController::class, 'pelangganStore']);
-    
-
+    Route::delete('/pelanggan/delete/{id}', [PelangganController::class, 'pelangganDelete']);
+    Route::put('/pelanggan/update/{id}', [PelangganController::class, 'pelangganUpdate']);
+    Route::get('/pelanggan/edit/{id}', [PelangganController::class, 'pelangganEdit']);
 
     //Supplier
     Route::get('/supplier/new', [SupplierController::class, 'supplierNew']);
     Route::get('/supplier/all', [SupplierController::class, 'supplierAll']);
     Route::post('/supplier/store', [SupplierController::class, 'supplierStore']);
-
-
+    Route::delete('/supplier/delete/{id}', [SupplierController::class, 'supplierDelete']);
+    Route::put('/supplier/update/{id}', [SupplierController::class, 'supplierUpdate']);
+    Route::get('/supplier/edit/{id}', [SupplierController::class, 'supplierEdit']);
 
     //Barang
     Route::get('/barang/new', [BarangController::class, 'barangNew']);
     Route::get('/barang/all', [BarangController::class, 'barangAll']);
     Route::post('/barang/store', [BarangController::class, 'barangStore']);
+    Route::delete('/barang/delete/{id}', [BarangController::class, 'barangDelete']);
+    Route::put('/barang/update/{id}', [BarangController::class, 'barangUpdate']);
+    Route::get('/barang/edit/{id}', [BarangController::class, 'barangEdit']);
 
 
 

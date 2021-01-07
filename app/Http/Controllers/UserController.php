@@ -37,6 +37,16 @@ class UserController extends Controller
         ]);
     }
 
+    //halaman update
+    public function userEdit($id){
+        // mengambil data service dokter berdasarkan id yang dipilih
+        $user = User::where('id',$id)->get();
+        
+        return view('form/formUserEdit', [
+            'users' => $user,
+        ]);
+    }
+
     //store
     public function userStore(Request $request){
         $id_auth= auth()->id();
@@ -51,7 +61,27 @@ class UserController extends Controller
             $user->save();
 
             return redirect('/user/all');
-        
-        
+    }
+
+    //Update
+    public function userUpdate(Request $request, $id){
+
+        // update data alamat berdasarkan id pada $id
+        User::where('id', $id)->update([
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'jabatan' => $request->jabatan
+        ]);
+
+        return redirect('/user/all');
+    }
+
+    //delete
+    public function userDelete($id){
+
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect('/user/all');
     }
 }

@@ -65,16 +65,35 @@ class SupplierController extends Controller
         
     }
 
-    function invoiceNumber()
-{
-    $latest = Pemasok::latest()->first();
-
-    if (! $latest) {
-        return 'S0001';
+    //halaman update
+    public function supplierEdit($id){
+        // mengambil data supplier berdasarkan id yang dipilih
+        $pemasok = Pemasok::where('id',$id)->get();
+        
+        return view('form/formSupplierEdit', [
+            'suppliers' => $pemasok,
+        ]);
     }
 
-    $string = preg_replace("/[^0-9\.]/", '', $latest->kode_supplier);
+    //Update
+    public function supplierUpdate(Request $request, $id){
 
-    return 'S' . sprintf('%04d', $string+1);
-}
+        // update data supplier berdasarkan id pada $id
+        Pemasok::where('id', $id)->update([
+            'nama_supplier' => $request->nama_lengkap,
+            'no_telp_supplier' => $request->no_telp,
+            'alamat_supplier' => $request->alamat
+        ]);
+
+        return redirect('/supplier/all');
+    }
+
+    //delete
+    public function supplierDelete($id){
+
+        $supplier = Pemasok::findOrFail($id);
+        $supplier->delete();
+
+        return redirect('/supplier/all');
+    }
 }

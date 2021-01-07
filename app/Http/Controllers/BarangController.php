@@ -68,4 +68,37 @@ class BarangController extends Controller
         }
         
     }
+
+    //halaman update
+    public function barangEdit($id){
+        // mengambil data barang berdasarkan id yang dipilih
+        $barang = Barang::where('id',$id)->get();
+        
+        return view('form/formBarangEdit', [
+            'barangs' => $barang,
+        ]);
+    }
+
+    //Update
+    public function barangUpdate(Request $request, $id){
+
+        // update data barang berdasarkan id pada $id
+        Barang::where('id', $id)->update([
+            'nama_barang' => $request->nama_barang,
+            'deskripsi_barang' => $request->deskripsi,
+            'harga_satuan' => $request->harga_satuan,
+            'stok' => $request->stok
+        ]);
+
+        return redirect('/barang/all');
+    }
+
+    //delete
+    public function barangDelete($id){
+
+        $barang = Barang::findOrFail($id);
+        $barang->delete();
+
+        return redirect('/barang/all');
+    }
 }

@@ -64,4 +64,36 @@ class PelangganController extends Controller
         }
         
     }
+
+    //halaman update
+    public function pelangganEdit($id){
+        // mengambil data pelanggan berdasarkan id yang dipilih
+        $pelanggan = Pelanggan::where('id',$id)->get();
+        
+        return view('form/formPelangganEdit', [
+            'pelanggans' => $pelanggan,
+        ]);
+    }
+
+    //Update
+    public function pelangganUpdate(Request $request, $id){
+
+        // update data pelanggan berdasarkan id pada $id
+        Pelanggan::where('id', $id)->update([
+            'nama_pelanggan' => $request->nama_lengkap,
+            'no_telp_pelanggan' => $request->no_telp,
+            'alamat_pelanggan' => $request->alamat
+        ]);
+
+        return redirect('/pelanggan/all');
+    }
+
+    //delete
+    public function pelangganDelete($id){
+
+        $pelanggan = Pelanggan::findOrFail($id);
+        $pelanggan->delete();
+
+        return redirect('/pelanggan/all');
+    }
 }
