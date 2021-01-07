@@ -13,12 +13,12 @@ class CreateSupplierTable extends Migration
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
+        Schema::create('pemasoks', function (Blueprint $table) {
             $table->id();
             $table->string('kode_supplier');
             $table->string('nama_supplier');
             $table->string('no_telp_supplier');
-            $table->text('alamat_pelanggan');
+            $table->text('alamat_supplier');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });
