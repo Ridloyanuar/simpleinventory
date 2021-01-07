@@ -13,7 +13,7 @@ class CreatePembelianTable extends Migration
      */
     public function up()
     {
-        Schema::create('pembelian', function (Blueprint $table) {
+        Schema::create('pembelians', function (Blueprint $table) {
             $table->id();
             $table->string('kode_pembelian');
             $table->dateTime('tanggal_pembelian');

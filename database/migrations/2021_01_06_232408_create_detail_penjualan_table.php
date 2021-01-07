@@ -13,7 +13,7 @@ class CreateDetailPenjualanTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_penjualan', function (Blueprint $table) {
+        Schema::create('detail_penjualans', function (Blueprint $table) {
             $table->id();
             $table->string('kode_penjualan');
             $table->string('kode_barang');

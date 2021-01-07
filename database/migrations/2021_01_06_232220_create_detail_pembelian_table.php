@@ -13,7 +13,7 @@ class CreateDetailPembelianTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_pembelian', function (Blueprint $table) {
+        Schema::create('detail_pembelians', function (Blueprint $table) {
             $table->id();
             $table->string('kode_pembelian');
             $table->string('kode_barang');
