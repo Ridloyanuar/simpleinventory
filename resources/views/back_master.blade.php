@@ -191,12 +191,12 @@
             </a>
           </li>    
           <li class="nav-item">
-            <a class="nav-link  " href="/admin/send-mail" style="padding-left:15%;">
+            <a class="nav-link  " href="/pembelian/all" style="padding-left:15%;">
             <i class="fas fa-paw" class="ni text-blue"></i> Pembelian
             </a>
           </li>     
           <li class="nav-item">
-            <a class="nav-link  " href="/admin/kotak-masuk" style="padding-left:15%;">
+            <a class="nav-link  " href="/penjualan/all" style="padding-left:15%;">
             <i class="fas fa-paw" class="ni text-blue"></i> Penjualan
             </a>
           </li> 

@@ -26,17 +26,17 @@ class PembelianController extends Controller
         $id_auth= auth()->id();
 
         // mengambil seluruh data user
-        $supplier = DB::table('pembelians')
+        $pembelians = DB::table('pembelians')
         ->select('*')
         ->where('deleted_at',null)
         ->get();
 
         // mengambil total data user
-        $supplier_count = DB::table('pembelians')->count();
+        $pembelians_count = DB::table('pembelians')->count();
 
         return view('table/dataPembelian', [
-            'suppliers' => $supplier,
-            'supplier_count'=>$supplier_count
+            'pembelians' => $pembelians,
+            'pembelian_count'=>$pembelians_count
         ]);
     }
 
@@ -59,7 +59,7 @@ class PembelianController extends Controller
             $pembelian->kode_pembelian = "TB001";
             $pembelian->tanggal_pembelian = date("Y-m-d h:i:s");
             $pembelian->kode_supplier = $request->supplier;
-            $pembelian->total_biaya = 1000;
+            $pembelian->total_biaya = $request->sub_total;
             $pembelian->tanggal_dibuat = date("Y-m-d h:i:s");
             $pembelian->dibuat_oleh = $username;
             $pembelian->save();
@@ -94,7 +94,7 @@ class PembelianController extends Controller
             $pembelian->kode_pembelian = $kode_pembelian;
             $pembelian->tanggal_pembelian = date("Y-m-d h:i:s");
             $pembelian->kode_supplier = $request->supplier;
-            $pembelian->total_biaya = 1000;
+            $pembelian->total_biaya = $request->sub_total;
             $pembelian->tanggal_dibuat = date("Y-m-d h:i:s");
             $pembelian->dibuat_oleh = $username;
             $pembelian->save();

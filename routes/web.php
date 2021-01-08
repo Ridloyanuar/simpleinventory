@@ -62,10 +62,10 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/pembelian/all', [PembelianController::class, 'pembelianAll']);
     Route::post('/pembelian/store', [PembelianController::class, 'pembelianStore']);
 
-
-
     //Penjualan
-    Route::get('/penjualan/new', [PenjualanController::class, 'penjualanaNew']);
+    Route::get('/penjualan/new', [PenjualanController::class, 'penjualanNew']);
+    Route::get('/penjualan/all', [PenjualanController::class, 'penjualanAll']);
+    Route::post('/penjualan/store', [PenjualanController::class, 'penjualanStore']);
 
 });
 

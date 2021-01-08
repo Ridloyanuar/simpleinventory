@@ -18,24 +18,24 @@
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">Form Pembelian</h3>
+                  <h3 class="mb-0">Form Penjualan</h3>
                 </div>
               </div>
             </div>
             <div class="card-body">
             
-              <form action="/pembelian/store" method="post" enctype="multipart/form-data">
+              <form action="/penjualan/store" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
                 <div class="pl-lg-4">
                 
                   <div class="row">
                     <div class="col-lg-12">
                     <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Supplier</label>
-                        <select class="form-control form-control-alternative" name="supplier" id="supplier" required>
+                        <label class="form-control-label" for="input-first-name">Pelanggan</label>
+                        <select class="form-control form-control-alternative" name="pelanggan" id="pelanggan" required>
                         <option>pilih</option>
-                          @foreach($suppliers as $supplier)
-                          <option value="{{$supplier->kode_supplier}}">{{$supplier->kode_supplier}} ({{$supplier->nama_supplier}})</option>
+                          @foreach($pelanggans as $pelanggan)
+                          <option value="{{$pelanggan->kode_pelanggan}}">{{$pelanggan->kode_pelanggan}} ({{$pelanggan->nama_pelanggan}})</option>
                           @endforeach
                         </select>
                       </div>
