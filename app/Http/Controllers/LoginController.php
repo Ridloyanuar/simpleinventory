@@ -21,7 +21,7 @@ class LoginController extends Controller
             $id= Auth::id();
             $role = User::find($id);
             
-            return redirect('/dashboard');
+            return redirect('/user/all');
             
         }else{
             return redirect()->back()->with('alert','Password / Username yang anda masukan salah');

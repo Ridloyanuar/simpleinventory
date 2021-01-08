@@ -23,7 +23,6 @@ class BarangController extends Controller
         $barang = DB::table('barangs')
         ->select('*')
         ->where('deleted_at',null)
-        ->orderBy('created_at', 'DESC')
         ->get();
 
         // mengambil total data user

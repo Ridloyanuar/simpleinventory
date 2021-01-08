@@ -3,6 +3,8 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Auth;
@@ -55,10 +57,20 @@ Route::middleware(['auth'])->group(function (){
     Route::put('/barang/update/{id}', [BarangController::class, 'barangUpdate']);
     Route::get('/barang/edit/{id}', [BarangController::class, 'barangEdit']);
 
+    //Pembelian
+    Route::get('/pembelian/new', [PembelianController::class, 'pembelianNew']);
+    Route::get('/pembelian/all', [PembelianController::class, 'pembelianAll']);
+    Route::post('/pembelian/store', [PembelianController::class, 'pembelianStore']);
 
+
+
+    //Penjualan
+    Route::get('/penjualan/new', [PenjualanController::class, 'penjualanaNew']);
 
 });
 
 
 Route::get('/', [LoginController::class, 'show']);
 Route::post('/auth', [LoginController::class, 'authenticate']);  
+
+Route::get('/getBarang/{id}', [PembelianController::class, 'getBarang']);
