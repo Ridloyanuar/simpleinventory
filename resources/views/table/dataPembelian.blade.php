@@ -80,7 +80,59 @@ $i=1;
                 
                     <td>
                     
-                         <a class="btn btn-sm btn-warning" href="/pembelian/edit/{{$pembelian->id}}">edit</a>
+                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-join{{$pembelian->kode_pembelian}}">view</button>
+
+                        <div class="modal fade" id="modal-join{{$pembelian->kode_pembelian}}" tabindex="-1" role="dialog" aria-labelledby="modal-join" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-" role="document" style="max-width: 900px;">
+                              <div class="modal-content bg-secondary">
+                                <div class="modal-body" style="white-space: normal;">
+
+                                  <div class="card row text-left" >
+                                    <div class="card-horizontal" style="height: 10%;;">
+                                        <div class="card-body col-lg-8 row" style="padding-top: 10px;padding-bottom: 15px; padding-right:0px;">
+                                          <ul class="col-lg-7" style="padding-right: 0px;">
+                                            <li style="list-style:none;font-family: Gotham Pro Bold; font-size: 15pt">
+                                              Detail Pembelian
+                                            </li>
+                                            <li class="row" style="list-style:none;font-family: Gotham Pro Medium; padding-top:20%">
+                                                <div class="col-lg-5">Kode Pembelian</div>
+                                                <div class="col-lg-7">: {{$pembelian->kode_pembelian}}</div>
+                                            </li>
+                                            <li class="row" style="list-style:none;font-family: Gotham Pro Medium; margin-top:3%">
+                                                <div class="col-lg-5">Tanggal Pembelian</div>
+                                                <div class="col-lg-7">: {{$pembelian->tanggal_pembelian}}</div>
+                                            </li>
+                                            <li class="row" style="list-style:none;font-family: Gotham Pro Medium; margin-top:3%">
+                                                <div class="col-lg-5">Total Biaya</div>
+                                                <div class="col-lg-7">: {{$pembelian->total_biaya}}</div>
+                                            </li>
+                                            <li class="row" style="list-style:none;font-family: Gotham Pro Medium; margin-top:3%">
+                                                <div class="col-lg-5">Dibuat Oleh</div>
+                                                <div class="col-lg-7">: {{$pembelian->dibuat_oleh}}</div>
+                                            </li>
+                                            <li class="row" style="list-style:none;font-family: Gotham Pro Medium; margin-top:3%">
+                                                <div class="col-lg-5">Kode Barang</div>
+                                                <div class="col-lg-7">: {{$pembelian->kode_barang}}</div>
+                                            </li>
+                                            <li class="row" style="list-style:none;font-family: Gotham Pro Medium; margin-top:3%">
+                                                <div class="col-lg-5">Harga Satuan</div>
+                                                <div class="col-lg-7">: {{$pembelian->harga_satuan}}</div>
+                                            </li>
+                                            <li class="row" style="list-style:none;font-family: Gotham Pro Medium; margin-top:3%">
+                                                <div class="col-lg-5">Jumlah</div>
+                                                <div class="col-lg-7">: {{$pembelian->jumlah}}</div>
+                                            </li>
+                                            
+                                            
+                                          </ul>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
 
                         <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete{{$pembelian->id}}">delete</button>
                         <div class="modal fade" id="modal-delete{{$pembelian->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
@@ -99,7 +151,7 @@ $i=1;
                                       </div>
                                   </div>
                                   <div class="modal-footer">
-                                      <form action="/pembelian/delete/{{$pembelian->id}}" method="post">
+                                      <form action="/pembelian/delete/{{$pembelian->kode_pembelian}}" method="post">
                                           <input type="submit" name="submit" value="Delete" class="btn btn-sm btn-danger my-1">
                                             {{ csrf_field() }}
                                           <input  type="hidden" name="_method" value="DELETE">

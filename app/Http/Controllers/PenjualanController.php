@@ -39,6 +39,16 @@ class PenjualanController extends Controller
         ]);
     }
 
+    //delete
+    public function penjualanDelete($kode){
+        $penjualan = Penjualan::where('kode_penjualan',$kode)->first();
+        $detailPenjualan = DetailPenjualan::where('kode_penjualan',$kode);
+        $penjualan->delete();
+        $detailPenjualan->delete();
+
+        return redirect('/penjualan/all');
+    }
+
     public function getBarang($id){
 
         $barang = Barang::where('kode_barang',$id)->get();

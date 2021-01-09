@@ -26,10 +26,15 @@ class PembelianController extends Controller
         $id_auth= auth()->id();
 
         // mengambil seluruh data user
-        $pembelians = DB::table('pembelians')
-        ->select('*')
-        ->where('deleted_at',null)
-        ->get();
+        $pembelians = Pembelian::with('detailPembelian')->get();
+        // dd($pembelians);
+        // $pembelians = DB::table('pembelians')
+        // ->select(
+        //     '*',
+        //     'pembelians.id AS id'
+        //     )
+        // ->leftjoin('detail_pembelians','detail_pembelians.kode_pembelian','=','pembelians.kode_pembelian')
+        // ->get();
 
         // mengambil total data user
         $pembelians_count = DB::table('pembelians')->count();
@@ -45,6 +50,16 @@ class PembelianController extends Controller
         $barang = Barang::where('kode_barang',$id)->get();
         return response()->json(['data' => $barang]);
 
+    }
+
+    //delete
+    public function pembelianDelete($kode){
+        $pembelian = Pembelian::where('kode_pembelian',$kode)->first();
+        $detailPembelian = DetailPembelian::where('kode_pembelian',$kode);
+        $pembelian->delete();
+        $detailPembelian->delete();
+
+        return redirect('/pembelian/all');
     }
 
     //store

@@ -79,11 +79,50 @@ $i=1;
                     </td>
                 
                     <td>
-                    
-                         <a class="btn btn-sm btn-warning" href="/penjualan/edit/{{$penjualan->id}}">edit</a>
+                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-join{{$penjualan->kode_penjualan}}">view</button>
 
-                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete{{$penjualan->id}}">delete</button>
-                        <div class="modal fade" id="modal-delete{{$penjualan->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+                    <div class="modal fade" id="modal-join{{$penjualan->kode_penjualan}}" tabindex="-1" role="dialog" aria-labelledby="modal-join" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-" role="document" style="max-width: 900px;">
+                          <div class="modal-content bg-secondary">
+                            <div class="modal-body" style="white-space: normal;">
+
+                              <div class="card row text-left" >
+                                <div class="card-horizontal" style="height: 10%;;">
+                                    <div class="card-body col-lg-8 row" style="padding-top: 10px;padding-bottom: 15px; padding-right:0px;">
+                                      <ul class="col-lg-7" style="padding-right: 0px;">
+                                        <li style="list-style:none;font-family: Gotham Pro Bold; font-size: 15pt">
+                                          Detail Penjualan
+                                        </li>
+                                        <li class="row" style="list-style:none;font-family: Gotham Pro Medium; padding-top:20%">
+                                            <div class="col-lg-5">Kode Penjualan</div>
+                                            <div class="col-lg-7">: {{$penjualan->kode_penjualan}}</div>
+                                        </li>
+                                        <li class="row" style="list-style:none;font-family: Gotham Pro Medium; margin-top:3%">
+                                            <div class="col-lg-5">Tanggal Pembelian</div>
+                                            <div class="col-lg-7">: {{$penjualan->tanggal_penjualan}}</div>
+                                        </li>
+                                        <li class="row" style="list-style:none;font-family: Gotham Pro Medium; margin-top:3%">
+                                            <div class="col-lg-5">Total Biaya</div>
+                                            <div class="col-lg-7">: {{$penjualan->total_biaya}}</div>
+                                        </li>
+                                        <li class="row" style="list-style:none;font-family: Gotham Pro Medium; margin-top:3%">
+                                            <div class="col-lg-5">Dibuat Oleh</div>
+                                            <div class="col-lg-7">: {{$penjualan->dibuat_oleh}}</div>
+                                        </li>
+                                        
+                                        
+                                      </ul>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                    
+                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete{{$penjualan->kode_penjualan}}">delete</button>
+                        <div class="modal fade" id="modal-delete{{$penjualan->kode_penjualan}}" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
                           <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
                               <div class="modal-content ">
                                   <div class="modal-header">
@@ -99,7 +138,7 @@ $i=1;
                                       </div>
                                   </div>
                                   <div class="modal-footer">
-                                      <form action="/penjualan/delete/{{$penjualan->id}}" method="post">
+                                      <form action="/penjualan/delete/{{$penjualan->kode_penjualan}}" method="post">
                                           <input type="submit" name="submit" value="Delete" class="btn btn-sm btn-danger my-1">
                                             {{ csrf_field() }}
                                           <input  type="hidden" name="_method" value="DELETE">

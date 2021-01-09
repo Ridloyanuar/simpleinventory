@@ -61,11 +61,15 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/pembelian/new', [PembelianController::class, 'pembelianNew']);
     Route::get('/pembelian/all', [PembelianController::class, 'pembelianAll']);
     Route::post('/pembelian/store', [PembelianController::class, 'pembelianStore']);
+    Route::delete('/pembelian/delete/{kode}', [PembelianController::class, 'pembelianDelete']);
+
 
     //Penjualan
     Route::get('/penjualan/new', [PenjualanController::class, 'penjualanNew']);
     Route::get('/penjualan/all', [PenjualanController::class, 'penjualanAll']);
     Route::post('/penjualan/store', [PenjualanController::class, 'penjualanStore']);
+    Route::delete('/penjualan/delete/{kode}', [PenjualanController::class, 'penjualanDelete']);
+
 
     //Laporan Mutasi Stok
     Route::get('/mutasi/new', [UserController::class, 'mutasiNew']);
