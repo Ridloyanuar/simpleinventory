@@ -76,6 +76,7 @@ class PenjualanController extends Controller
                     $detailPenjualan->kode_barang = $request->barang[$item];
                     $detailPenjualan->harga_satuan = $request->item_nama_barang[$item];
                     $detailPenjualan->jumlah = $request->item_jumlah[$item];
+                    $detailPenjualan->created_at = date("m/d/Y");
                     $detailPenjualan->save();
 
                     Barang::where('kode_barang', $request->barang[$item])->update([
@@ -125,6 +126,7 @@ class PenjualanController extends Controller
                     $detailPenjualan->kode_barang = $request->barang[$item];
                     $detailPenjualan->harga_satuan = $request->item_nama_barang[$item];
                     $detailPenjualan->jumlah = $request->item_jumlah[$item];
+                    $detailPenjualan->created_at = date("m/d/Y");
                     $detailPenjualan->save();
 
                     Barang::where('kode_barang', $request->barang[$item])->update([

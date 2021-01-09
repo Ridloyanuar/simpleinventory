@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
+use App\Models\DetailPembelian;
+use App\Models\DetailPenjualan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -84,4 +87,30 @@ class UserController extends Controller
 
         return redirect('/user/all');
     }
+
+    //mutasi
+    public function mutasiNew(Request $request){
+        $id_auth= auth()->id();
+        // $role = User::find($id_auth);
+        $barang = Barang::all();
+        $mutasiMasuk = DetailPembelian::where('kode_barang', $request->kode_barang)
+        ->whereBetween('created_at',[$request->tanggal_awal,$request->tanggal_akhir])->get();
+
+        // dd($mutasiMasuk);
+        return view('form/formMutasi',['barangs' => $barang,'masuk' => $mutasiMasuk]);
+    }
+
+    //mutasi
+    public function mutasiKeluarNew(Request $request){
+        $id_auth= auth()->id();
+        // $role = User::find($id_auth);
+        $barang = Barang::all();
+        $mutasiKeluar = DetailPenjualan::where('kode_barang', $request->kode_barang)
+        ->whereBetween('created_at',[$request->tanggal_awal,$request->tanggal_akhir])->get();
+
+        // dd($mutasiMasuk);
+        return view('form/formMutasiKeluar',['barangs' => $barang,'keluar' => $mutasiKeluar]);
+    }
+
+   
 }

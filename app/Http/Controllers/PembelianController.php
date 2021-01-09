@@ -72,6 +72,7 @@ class PembelianController extends Controller
                 $detailPembelian->kode_barang = $request->barang[$item];
                 $detailPembelian->harga_satuan = $request->item_nama_barang[$item];
                 $detailPembelian->jumlah = $request->item_jumlah[$item];
+                $detailPembelian->created_at = date("m/d/Y");
                 $detailPembelian->save();
 
                 $barang = Barang::where('kode_barang', $request->barang[$item])->first();
@@ -107,6 +108,7 @@ class PembelianController extends Controller
                 $detailPembelian->kode_barang = $request->barang[$item];
                 $detailPembelian->harga_satuan = $request->item_nama_barang[$item];
                 $detailPembelian->jumlah = $request->item_jumlah[$item];
+                $detailPembelian->created_at = date("m/d/Y");
                 $detailPembelian->save();
 
                 $barang = Barang::where('kode_barang', $request->barang[$item])->first();

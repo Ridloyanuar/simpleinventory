@@ -206,10 +206,15 @@
             </a>
           </li>    
           <li class="nav-item">
-            <a class="nav-link  " href="/mutasistok" style="padding-left:15%;">
-            <i class="fas fa-history" class="ni text-blue"></i> Laporan Mutasi Stok
+            <a class="nav-link  " href="/mutasi/new" style="padding-left:15%;">
+            <i class="fas fa-history" class="ni text-blue"></i> Laporan Mutasi Stok Masuk
             </a>
-          </li>  
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  " href="/mutasikeluar/new" style="padding-left:15%;">
+            <i class="fas fa-history" class="ni text-blue"></i> Laporan Mutasi Stok Keluar
+            </a>
+          </li>    
         </ul>
       </div>
     </div>

@@ -67,6 +67,14 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/penjualan/all', [PenjualanController::class, 'penjualanAll']);
     Route::post('/penjualan/store', [PenjualanController::class, 'penjualanStore']);
 
+    //Laporan Mutasi Stok
+    Route::get('/mutasi/new', [UserController::class, 'mutasiNew']);
+    Route::post('/mutasi/new', [UserController::class, 'mutasiNew']);
+
+    //Laporan Mutasi Stok Keluar
+    Route::get('/mutasikeluar/new', [UserController::class, 'mutasiKeluarNew']);
+    Route::post('/mutasikeluar/new', [UserController::class, 'mutasiKeluarNew']);
+
 });
 
 
