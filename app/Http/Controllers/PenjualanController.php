@@ -64,12 +64,9 @@ class PenjualanController extends Controller
                 $update_stok = $stok - $request->item_jumlah[$item];
 
                 if($stok<$request->item_jumlah[$item]){
-                    ?>
-                    <script language="JavaScript">
-                        alert('Oops! Jumlah pengeluaran lebih besar dari stok ...');
-                        document.location='./';
-                    </script>
-                    <?php
+                    echo '<script language="javascript">';
+                    echo 'alert("Oops! Jumlah pengeluaran lebih besar dari stok ...")';
+                    echo '</script>';
                                 
                     return redirect()->back();
                 }else{
@@ -92,7 +89,7 @@ class PenjualanController extends Controller
             $penjualan->kode_penjualan = "TJ001";
             $penjualan->tanggal_penjualan = date("Y-m-d h:i:s");
             $penjualan->kode_pelanggan = $request->pelanggan;
-            $penjualan->total_biaya = 12;
+            $penjualan->total_biaya = $request->harga_total;
             $penjualan->tanggal_dibuat = date("Y-m-d h:i:s");
             $penjualan->dibuat_oleh = $username;
             $penjualan->save();
@@ -116,14 +113,11 @@ class PenjualanController extends Controller
                 $update_stok = $stok - $request->item_jumlah[$item];
 
                 if($stok<$request->item_jumlah[$item]){
-                    ?>
-                    <script>
-                        alert('Oops! Jumlah pengeluaran lebih besar dari stok ...');
-                        document.location='./';
-                    </script>
-                    <?php
-                                
-                    return redirect()->back();
+                    echo "<script>";
+                    echo "alert('Oops! Jumlah pengeluaran lebih besar dari stok ...')";
+                    echo "</script>";
+                    // return "<script>alert('username atau password salah')</script>";
+                    return redirect()->back()->with('alert'.'Oops! Jumlah pengeluaran lebih besar dari stok ...');
                 }else{
 
                     $detailPenjualan = new DetailPenjualan();
@@ -144,7 +138,7 @@ class PenjualanController extends Controller
             $penjualan->kode_penjualan = $kode_penjualan;
             $penjualan->tanggal_penjualan = date("Y-m-d h:i:s");
             $penjualan->kode_pelanggan = $request->pelanggan;
-            $penjualan->total_biaya = 12;
+            $penjualan->total_biaya = $request->harga_total;
             $penjualan->tanggal_dibuat = date("Y-m-d h:i:s");
             $penjualan->dibuat_oleh = $username;
             $penjualan->save();

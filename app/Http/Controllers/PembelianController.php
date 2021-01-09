@@ -59,7 +59,7 @@ class PembelianController extends Controller
             $pembelian->kode_pembelian = "TB001";
             $pembelian->tanggal_pembelian = date("Y-m-d h:i:s");
             $pembelian->kode_supplier = $request->supplier;
-            $pembelian->total_biaya = $request->sub_total;
+            $pembelian->total_biaya = $request->harga_total;
             $pembelian->tanggal_dibuat = date("Y-m-d h:i:s");
             $pembelian->dibuat_oleh = $username;
             $pembelian->save();
@@ -94,7 +94,7 @@ class PembelianController extends Controller
             $pembelian->kode_pembelian = $kode_pembelian;
             $pembelian->tanggal_pembelian = date("Y-m-d h:i:s");
             $pembelian->kode_supplier = $request->supplier;
-            $pembelian->total_biaya = $request->sub_total;
+            $pembelian->total_biaya = $request->harga_total;
             $pembelian->tanggal_dibuat = date("Y-m-d h:i:s");
             $pembelian->dibuat_oleh = $username;
             $pembelian->save();

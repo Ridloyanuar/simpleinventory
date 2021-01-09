@@ -53,12 +53,26 @@
                       <th scope="col"><a id="add" type="button" class="btn btn-success btn-fab btn-icon btn-round"><i class="fas fa-plus"></i></a></th>
                     </tr>
                   </thead>
-                  <tbody></tbody>
+                  <tbody>
+                    <!-- dynamic form -->
+                  </tbody>
                   </table>  
                   <!-- end table -->
 
                 
                 <hr class="my-4" />
+
+                <div class="row">
+                    <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Harga Total</label>
+                        <input type="text" id="harga_total" name="harga_total" class="form-control form-control-alternative harga" placeholder="Harga Total" readonly required>
+                      </div>
+                    </div>
+                  </div>
+
+                <hr class="my-4" />
+                  
                 <div class="row">
                     <div class="col-lg-12" style="text-align:right">
                       <button type="submit" name="submit" class="btn btn-primary my-4">Simpan</button>
@@ -85,8 +99,8 @@
         html += '<option value="0">pilih</option> @foreach($barangs as $barang) <option value="{{$barang->kode_barang}}">{{$barang->kode_barang}} ({{$barang->nama_barang}})</option> @endforeach';
         html += '</select></td>';
         html += '<td><input type="number" name="item_nama_barang[]" id="namaBarang'+i+'" class="form-control item_nama" readonly /></td>'
-        html += '<td><input type="number" name="item_jumlah[]"  class="form-control item_jumlah" /></td>'
-        html += '<td><input type="text" id="sub_total" name="sub_total" class="form-control sub_total" readonly/></td>'
+        html += '<td><input type="number" name="item_jumlah[]" data-sub_jumlah_id="'+i+'"  class="form-control item_jumlah" /></td>'
+        html += '<td><input type="text" id="sub_total'+i+'" name="sub_total[]" class="form-control sub_total" readonly/></td>'
         html += '<td><a id="remove" class="btn btn-danger btn-fab btn-icon btn-round remove"><i class="fas fa-trash"></i></a></td>';
         $('tbody').append(html);
     });
@@ -97,11 +111,26 @@
 
     $(document).on('input','.item_jumlah', function(){
         var sub_total = 0;
-        var harga = $('.item_nama').val();
+        var sub_jumlah_id = $(this).data('sub_jumlah_id');
+        var sub_total_id = $(this).data('sub_total_id');
+        var harga = $('#namaBarang'+sub_jumlah_id).val();
         var jml = $(this).val();
         sub_total = harga * jml;
-        $('#sub_total').val(sub_total);
+
+        $('#sub_total'+sub_jumlah_id).val(sub_total);
     });  
+
+    $(document).on('input','.item_jumlah', function () {
+      var total = 0;
+      $('.sub_total').each(function(){
+          var subtot = $(this).val();
+          if($.isNumeric(subtot)){
+            total += parseFloat(subtot);
+          }
+      });
+
+      $('#harga_total').val(total);
+    });
 
     $(document).on('change','.item_barang', function () {
 

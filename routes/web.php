@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware(['auth'])->group(function (){
     Auth::routes();
-    Route::get('logout', [LoginController::class, 'logout']);
+    Route::get('/logout', [LoginController::class, 'logout']);
 
     //User
     Route::get('/user/new', [UserController::class, 'userNew']);
@@ -71,6 +71,8 @@ Route::middleware(['auth'])->group(function (){
 
 
 Route::get('/', [LoginController::class, 'show']);
+Route::get('/login', [LoginController::class, 'show']);
 Route::post('/auth', [LoginController::class, 'authenticate']);  
+// Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/getBarang/{id}', [PembelianController::class, 'getBarang']);

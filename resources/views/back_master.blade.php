@@ -142,22 +142,22 @@
           </li>
           <li class="nav-item">
             <a class="nav-link  " href="/user/new" style="padding-left:15%;">
-            <i class="fas fa-paw" class="ni text-blue"></i> User
+            <i class="fas fa-user" class="ni text-blue"></i> User
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link  " href="/pelanggan/new" style="padding-left:15%;">
-            <i class="fas fa-paw" class="ni text-blue"></i> Pelanggan
+            <i class="fas fa-user" class="ni text-blue"></i> Pelanggan
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link  " href="/supplier/new" style="padding-left:15%;">
-            <i class="fas fa-history" class="ni text-blue"></i> Supplier
+            <i class="fas fa-user" class="ni text-blue"></i> Supplier
             </a>
           </li>  
           <li class="nav-item">
             <a class="nav-link  " href="/barang/new" style="padding-left:15%;">
-            <i class="fas fa-history" class="ni text-blue"></i> Barang
+            <i class="fas fa-tags" class="ni text-blue"></i> Barang
             </a>
           </li>  
           <li class="nav-item">
@@ -167,22 +167,22 @@
           </li>
           <li class="nav-item">
             <a class="nav-link  " href="/user/all" style="padding-left:15%;">
-            <i class="fas fa-paw" class="ni text-blue"></i> User
+            <i class="fas fa-user" class="ni text-blue"></i> User
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link  " href="/pelanggan/all" style="padding-left:15%;">
-            <i class="fas fa-paw" class="ni text-blue"></i> Pelanggan
+            <i class="fas fa-user" class="ni text-blue"></i> Pelanggan
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link  " href="/supplier/all" style="padding-left:15%;">
-            <i class="fas fa-history" class="ni text-blue"></i> Supplier
+            <i class="fas fa-user" class="ni text-blue"></i> Supplier
             </a>
           </li>  
           <li class="nav-item">
             <a class="nav-link  " href="/barang/all" style="padding-left:15%;">
-            <i class="fas fa-history" class="ni text-blue"></i> Barang
+            <i class="fas fa-tags" class="ni text-blue"></i> Barang
             </a>
           </li>  
           <li class="nav-item">
@@ -192,12 +192,12 @@
           </li>    
           <li class="nav-item">
             <a class="nav-link  " href="/pembelian/all" style="padding-left:15%;">
-            <i class="fas fa-paw" class="ni text-blue"></i> Pembelian
+            <i class="fas fa-shopping-cart" class="ni text-blue"></i> Pembelian
             </a>
           </li>     
           <li class="nav-item">
             <a class="nav-link  " href="/penjualan/all" style="padding-left:15%;">
-            <i class="fas fa-paw" class="ni text-blue"></i> Penjualan
+            <i class="fas fa-shopping-cart" class="ni text-blue"></i> Penjualan
             </a>
           </li> 
           <li class="nav-item">
@@ -206,8 +206,8 @@
             </a>
           </li>    
           <li class="nav-item">
-            <a class="nav-link  " href="/admin/send-mail" style="padding-left:15%;">
-            <i class="fas fa-paw" class="ni text-blue"></i> Laporan Mutasi Stok
+            <a class="nav-link  " href="/mutasistok" style="padding-left:15%;">
+            <i class="fas fa-history" class="ni text-blue"></i> Laporan Mutasi Stok
             </a>
           </li>  
         </ul>
@@ -219,52 +219,18 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="">Dashboard</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="">Dashboard (Admin)</a>
+        
         <!-- Form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-          <div class="form-group mb-0">
-            <div class="input-group input-group-alternative">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-search"></i></span>
-              </div>
-              <input class="form-control" placeholder="Search" type="text">
-            </div>
-          </div>
-        </form>
-        
-        
+
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
-          <li class="nav-item dropdown">
-            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="{{url('img/theme/team-4-800x800.jpg')  }}">
-                </span>
-                <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">username</span>
-                </div>
-              </div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-              <div class=" dropdown-header noti-title">
-                <h6 class="text-overflow m-0">Welcome!</h6>
-              </div>
-              <a href="./examples/profile.html" class="dropdown-item">
-                <i class="ni ni-single-02"></i>
-                <span>My profile</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#!" class="dropdown-item">
-               
-                <form method="POST" action="/logout">
-                    @csrf
-                    <button type="submit" name="submit" class=""> <i class="ni ni-user-run"></i>Logout</button>              
-                  </form>
                 
-              </a>
-            </div>
-          </li>
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <a href="/logout" class="mb-0 text-white d-none d-lg-inline-block">Logout</a>
+                </div>
+              </div>            
         </ul>
       </div>
     </nav>
