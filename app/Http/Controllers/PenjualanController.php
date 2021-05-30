@@ -25,17 +25,21 @@ class PenjualanController extends Controller
         $id_auth= auth()->id();
 
         // mengambil seluruh data user
-        $penjualan = DB::table('penjualans')
-        ->select('*')
-        ->where('deleted_at',null)
-        ->get();
+        $penjualan = Penjualan::with('Pelanggan', 'DetailPenjualan.Barang')->where('deleted_at', null)->get();
 
         // mengambil total data user
-        $penjualan_count = DB::table('penjualans')->count();
+        $penjualan_count = $penjualan->count();
+        $totalJual = [];
+        foreach ($penjualan as $jual) {
+            $totalJual [] = $jual->total_biaya;
+        }
+
+        $totalSemuanya =  array_sum($totalJual);
 
         return view('table/dataPenjualan', [
             'penjualans' => $penjualan,
-            'penjualan_count'=>$penjualan_count
+            'penjualan_count' => $penjualan_count,
+            'total_jual' => number_format($totalSemuanya, 2, '.', ',')
         ]);
     }
 

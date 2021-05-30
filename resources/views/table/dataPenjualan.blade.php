@@ -26,6 +26,20 @@ $i=1;
                 </div>
               </div>
             </div>
+
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Penjualan</h5>
+                      <span class="h2 font-weight-bold mb-0">Rp{{$total_jual}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -52,6 +66,7 @@ $i=1;
                     <th scope="col">Kode Penjualan</th>
                     <th scope="col">Tanggal Penjualan</th>
                     <th scope="col">Pelanggan</th>
+                    <th scope="col">No. Handphone</th>
                     <th scope="col">Total Biaya</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -72,7 +87,10 @@ $i=1;
                     {{$penjualan->tanggal_penjualan}}
                     </td>
                     <td>
-                    {{$penjualan->kode_pelanggan}}
+                    {{$penjualan->pelanggan->nama_pelanggan}}
+                    </td>
+                    <td>
+                    {{$penjualan->pelanggan->no_telp_pelanggan}}
                     </td>
                     <td>
                     {{$penjualan->total_biaya}}
