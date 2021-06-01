@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class BarangController extends Controller
 {
@@ -13,7 +14,11 @@ class BarangController extends Controller
         $id_auth= auth()->id();
         // $role = User::find($id_auth);
 
-        return view('form/formBarang');
+        $satuans = [
+            'kg'
+        ];
+
+        return view('form/formBarang', ['satuans' => $satuans]);
     }
 
     public function barangAll(){
@@ -37,15 +42,32 @@ class BarangController extends Controller
     //store
     public function barangStore(Request $request){
         $id_auth= auth()->id();
+
+        $rules = [
+            'nama_barang' => 'required|string',
+            'deskripsi_barang' => 'sometimes|required|string',
+            'harga_satuan' => 'required|integer',
+            'stok' => 'required|integer',
+            'satuan' => 'required|string'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()){
+            return $validator->errors();
+        }
+
         $latest = Barang::latest()->first();
 
         if (! $latest) {
             $barang = new Barang();
-            $barang->kode_barang = "B001";
+            $barang->kode_barang = 'B001';
+            $barang->gambar = $this->uploadFile($request->gambar, 'barang');
             $barang->nama_barang = $request->nama_barang;
             $barang->deskripsi_barang = $request->deskripsi;
             $barang->harga_satuan = $request->harga_satuan;
             $barang->stok = $request->stok;
+            $barang->satuan = $request->satuan;
+            $barang->created_by = 'admin';
             $barang->save();
 
             return redirect('/barang/all');
@@ -56,16 +78,17 @@ class BarangController extends Controller
 
             $barang = new Barang();
             $barang->kode_barang = $kode_pelanggan;
+            $barang->gambar = $this->uploadFile($request->gambar, 'barang');
             $barang->nama_barang = $request->nama_barang;
             $barang->deskripsi_barang = $request->deskripsi;
             $barang->harga_satuan = $request->harga_satuan;
             $barang->stok = $request->stok;
+            $barang->satuan = $request->satuan;
+            $barang->created_by = 'admin';
             $barang->save();
 
             return redirect('/barang/all');
-
         }
-        
     }
 
     //halaman update
@@ -99,5 +122,24 @@ class BarangController extends Controller
         $barang->delete();
 
         return redirect('/barang/all');
+    }
+
+    //upload file
+    private function uploadFile($file, string $type)
+    {
+        if (null === $file) {
+            return null;
+        }
+
+        $folder = 'Barang';
+
+        if (!file_exists($folder)) {
+            mkdir($folder);
+        }
+
+        $filename = $type . '_' . sha1(date('YmdHis')) . '.' . $file->getClientOriginalExtension();
+        $file->move($folder, $filename);
+
+        return $filename;
     }
 }

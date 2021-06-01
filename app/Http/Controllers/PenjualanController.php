@@ -44,7 +44,7 @@ class PenjualanController extends Controller
     }
 
     //delete
-    public function penjualanDelete($kode){
+    public function penjualanDelete($kode) {
         $penjualan = Penjualan::where('kode_penjualan',$kode)->first();
         $detailPenjualan = DetailPenjualan::where('kode_penjualan',$kode);
         $penjualan->delete();
@@ -53,7 +53,7 @@ class PenjualanController extends Controller
         return redirect('/penjualan/all');
     }
 
-    public function getBarang($id){
+    public function getBarang($id) {
 
         $barang = Barang::where('kode_barang',$id)->get();
         return response()->json(['data' => $barang]);
@@ -70,9 +70,6 @@ class PenjualanController extends Controller
         if (! $latest) {
             $items = count( (array) $request->barang);
             for($item=0; $item < $items; $item++){
-
-                
-
                 $barang = Barang::where('kode_barang', $request->barang[$item])->first();
                 $stok = $barang->stok;
                 $update_stok = $stok - $request->item_jumlah[$item];
@@ -115,14 +112,8 @@ class PenjualanController extends Controller
 
             $kode_penjualan = 'TJ' . sprintf('%03d', $string+1);
 
-            
-            
-
             $items = count( (array) $request->barang);
             for($item=0; $item < $items; $item++){
-
-                
-
                 $barang = Barang::where('kode_barang', $request->barang[$item])->first();
                 $stok = $barang->stok;
                 $update_stok = $stok - $request->item_jumlah[$item];
@@ -133,8 +124,7 @@ class PenjualanController extends Controller
                     echo "</script>";
                     // return "<script>alert('username atau password salah')</script>";
                     return redirect()->back()->with('alert'.'Oops! Jumlah pengeluaran lebih besar dari stok ...');
-                }else{
-
+                }else {
                     $detailPenjualan = new DetailPenjualan();
                     $detailPenjualan->kode_penjualan = $kode_penjualan;
                     $detailPenjualan->kode_barang = $request->barang[$item];
@@ -146,7 +136,6 @@ class PenjualanController extends Controller
                     Barang::where('kode_barang', $request->barang[$item])->update([
                         'stok' => $update_stok
                     ]);     
-
                 }
             }
 
@@ -159,11 +148,7 @@ class PenjualanController extends Controller
             $penjualan->dibuat_oleh = $username;
             $penjualan->save();
 
-
             return redirect('/penjualan/all');
-
-            
-
         }
         
     }

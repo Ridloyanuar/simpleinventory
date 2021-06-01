@@ -50,6 +50,25 @@
                       </div>
                     </div>
 
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                      <label class="form-control-label" for="input-username">Satuan</label>
+                      <select class="form-control form-control-alternative" name="satuan" id="satuan" required>
+                        <option>pilih</option>
+                          @foreach($satuans as $satuan)
+                          <option value="{{$satuan}}">{{$satuan}}</option>
+                          @endforeach
+                        </select>
+                    </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                      <label class="form-control-label" for="input-username">Gambar</label>
+                      <input type="file" id="gambar" name="gambar" class="form-control form-control-alternative" placeholder="Stok">
+                    </div>
+                    </div>
+
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Deskripsi</label>

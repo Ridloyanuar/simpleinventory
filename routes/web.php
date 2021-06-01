@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PembelianController;
@@ -82,8 +83,8 @@ Route::middleware(['auth'])->group(function (){
 });
 
 
-Route::get('/', [LoginController::class, 'show']);
-Route::get('/login', [LoginController::class, 'show']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/login/admin', [LoginController::class, 'show']);
 Route::post('/auth', [LoginController::class, 'authenticate']);  
 // Route::get('/logout', [LoginController::class, 'logout']);
 
