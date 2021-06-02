@@ -84,6 +84,10 @@ Route::middleware(['auth'])->group(function (){
 
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/shop', [HomeController::class, 'shop']);
+Route::get('/about', [HomeController::class, 'about']);
+Route::get('/contact', [HomeController::class, 'contact']);
+
 Route::get('/login/admin', [LoginController::class, 'show']);
 Route::post('/auth', [LoginController::class, 'authenticate']);  
 // Route::get('/logout', [LoginController::class, 'logout']);

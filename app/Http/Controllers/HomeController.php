@@ -10,4 +10,19 @@ class HomeController extends Controller
     {
         return view('front/front_home');
     }
+
+    public function shop() 
+    {
+        return view('front/front_shop');
+    }
+
+    public function about()
+    {
+        return view('front/front_about');
+    }
+
+    public function contact()
+    {
+        return view('front/front_about');
+    }
 }
