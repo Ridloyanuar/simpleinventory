@@ -23,7 +23,7 @@
               </div>
             </div>
             <div class="card-body">
-              <form action="/user/store" method="post" enctype="multipart/form-data">
+              <form action="admin/user/store" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
                 <h6 class="heading-small text-muted mb-4">Data Akun</h6>
                 <div class="pl-lg-4">

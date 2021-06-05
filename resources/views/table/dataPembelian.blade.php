@@ -39,7 +39,7 @@ $i=1;
               <div class="row">
                 <div class="col-lg-6"><h3 class="mb-0">Daftar Pembelian</h3></div>
                 <div class="col-lg-6" style="text-align:right;">
-                    <a class="btn btn-sm btn-primary" href="/pembelian/new">tambah baru</a>
+                    <a class="btn btn-sm btn-primary" href="{{ route('admin.pembelian.new') }}">tambah baru</a>
                     <input id="myInput" type="text" placeholder="Search..">
                     </div>
               </div>
@@ -151,7 +151,7 @@ $i=1;
                                       </div>
                                   </div>
                                   <div class="modal-footer">
-                                      <form action="/pembelian/delete/{{$pembelian->kode_pembelian}}" method="post">
+                                      <form action="delete/{{$pembelian->kode_pembelian}}" method="post">
                                           <input type="submit" name="submit" value="Delete" class="btn btn-sm btn-danger my-1">
                                             {{ csrf_field() }}
                                           <input  type="hidden" name="_method" value="DELETE">

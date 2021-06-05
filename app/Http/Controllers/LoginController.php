@@ -18,22 +18,18 @@ class LoginController extends Controller
     public function authenticate(Request $requestFields)
     {   
         $attributes = $requestFields->only(['username', 'password']);
-        if (Auth::attempt($attributes)) {
-            $id= Auth::id();
-            $role = User::find($id);
-            
-            return redirect('/user/all');
-            
-        }else{
-            return redirect()->back()->with('alert','Password / Username yang anda masukan salah');
+        if (Auth::guard('admin')->attempt($attributes)) {
+            return redirect()->intended('admin/user/all');
         }
+
+        return redirect()->back()->with('alert','Password / Username yang anda masukan salah');
     }
 
     public function logout()
     {
         Session::flush();
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
-        return redirect('/');
+        return redirect('/login/admin');
     }
 }

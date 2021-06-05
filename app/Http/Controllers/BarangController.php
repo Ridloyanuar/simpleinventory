@@ -70,7 +70,7 @@ class BarangController extends Controller
             $barang->created_by = 'admin';
             $barang->save();
 
-            return redirect('/barang/all');
+            return route('admin.barang.all');
         }else{
             $string = preg_replace("/[^0-9\.]/", '', $latest->kode_barang);
 
@@ -87,7 +87,7 @@ class BarangController extends Controller
             $barang->created_by = 'admin';
             $barang->save();
 
-            return redirect('/barang/all');
+            return route('admin.barang.all');
         }
     }
 
@@ -112,7 +112,7 @@ class BarangController extends Controller
             'stok' => $request->stok
         ]);
 
-        return redirect('/barang/all');
+        return route('admin.barang.all');
     }
 
     //delete
@@ -121,7 +121,7 @@ class BarangController extends Controller
         $barang = Barang::findOrFail($id);
         $barang->delete();
 
-        return redirect('/barang/all');
+        return route('admin.barang.all');
     }
 
     //upload file

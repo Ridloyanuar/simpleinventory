@@ -50,7 +50,7 @@ class PenjualanController extends Controller
         $penjualan->delete();
         $detailPenjualan->delete();
 
-        return redirect('/penjualan/all');
+        return route('admin.penjualan.all');
     }
 
     public function getBarang($id) {
@@ -106,7 +106,7 @@ class PenjualanController extends Controller
             $penjualan->dibuat_oleh = $username;
             $penjualan->save();
 
-            return redirect('/penjualan/all');
+            return route('admin.penjualan.all');
         }else{
             $string = preg_replace("/[^0-9\.]/", '', $latest->kode_penjualan);
 
@@ -148,7 +148,7 @@ class PenjualanController extends Controller
             $penjualan->dibuat_oleh = $username;
             $penjualan->save();
 
-            return redirect('/penjualan/all');
+            return route('admin.penjualan.all');
         }
         
     }

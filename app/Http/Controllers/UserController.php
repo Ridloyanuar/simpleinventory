@@ -63,7 +63,7 @@ class UserController extends Controller
             $user->jabatan = $request->jabatan;
             $user->save();
 
-            return redirect('/user/all');
+            return route('admin.user.all');
     }
 
     //Update
@@ -76,7 +76,7 @@ class UserController extends Controller
             'jabatan' => $request->jabatan
         ]);
 
-        return redirect('/user/all');
+        return route('admin.user.all');
     }
 
     //delete
@@ -85,7 +85,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect('/user/all');
+        return route('admin.user.all');
     }
 
     //mutasi

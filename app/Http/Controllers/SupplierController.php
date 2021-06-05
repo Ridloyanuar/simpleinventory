@@ -46,7 +46,7 @@ class SupplierController extends Controller
             $supplier->alamat_supplier = $request->alamat;
             $supplier->save();
 
-            return redirect('/supplier/all');
+            return route('admin.supplier.all');
         }else{
             $string = preg_replace("/[^0-9\.]/", '', $latest->kode_supplier);
 
@@ -59,7 +59,7 @@ class SupplierController extends Controller
             $supplier->alamat_supplier = $request->alamat;
             $supplier->save();
 
-            return redirect('/supplier/all');
+            return route('admin.supplier.all');
 
         }
         
@@ -85,7 +85,7 @@ class SupplierController extends Controller
             'alamat_supplier' => $request->alamat
         ]);
 
-        return redirect('/supplier/all');
+        return route('admin.supplier.all');
     }
 
     //delete
@@ -94,6 +94,6 @@ class SupplierController extends Controller
         $supplier = Pemasok::findOrFail($id);
         $supplier->delete();
 
-        return redirect('/supplier/all');
+        return route('admin.supplier.all');
     }
 }

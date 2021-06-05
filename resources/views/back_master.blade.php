@@ -136,27 +136,27 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="./examples/icons.html">
+            <a class="nav-link " href="">
               <i class="ni ni-planet text-blue"></i> Form Master
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  " href="/user/new" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.user.new') }}" style="padding-left:15%;">
             <i class="fas fa-user" class="ni text-blue"></i> User
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  " href="/pelanggan/new" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.pelanggan.new') }}" style="padding-left:15%;">
             <i class="fas fa-user" class="ni text-blue"></i> Pelanggan
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  " href="/supplier/new" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.supplier.new') }}" style="padding-left:15%;">
             <i class="fas fa-user" class="ni text-blue"></i> Supplier
             </a>
           </li>  
           <li class="nav-item">
-            <a class="nav-link  " href="/barang/new" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.barang.new') }}" style="padding-left:15%;">
             <i class="fas fa-tags" class="ni text-blue"></i> Barang
             </a>
           </li>  
@@ -166,22 +166,22 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  " href="/user/all" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.user.all') }}" style="padding-left:15%;">
             <i class="fas fa-user" class="ni text-blue"></i> User
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  " href="/pelanggan/all" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.pelanggan.all') }}" style="padding-left:15%;">
             <i class="fas fa-user" class="ni text-blue"></i> Pelanggan
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  " href="/supplier/all" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.supplier.all') }}" style="padding-left:15%;">
             <i class="fas fa-user" class="ni text-blue"></i> Supplier
             </a>
           </li>  
           <li class="nav-item">
-            <a class="nav-link  " href="/barang/all" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.barang.all') }}" style="padding-left:15%;">
             <i class="fas fa-tags" class="ni text-blue"></i> Barang
             </a>
           </li>  
@@ -191,12 +191,12 @@
             </a>
           </li>    
           <li class="nav-item">
-            <a class="nav-link  " href="/pembelian/all" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.pembelian.all') }}" style="padding-left:15%;">
             <i class="fas fa-shopping-cart" class="ni text-blue"></i> Pembelian
             </a>
           </li>     
           <li class="nav-item">
-            <a class="nav-link  " href="/penjualan/all" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.penjualan.all') }}" style="padding-left:15%;">
             <i class="fas fa-shopping-cart" class="ni text-blue"></i> Penjualan
             </a>
           </li> 
@@ -206,12 +206,12 @@
             </a>
           </li>    
           <li class="nav-item">
-            <a class="nav-link  " href="/mutasi/new" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.mutasi.stok.new') }}" style="padding-left:15%;">
             <i class="fas fa-history" class="ni text-blue"></i> Laporan Mutasi Stok Masuk
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  " href="/mutasikeluar/new" style="padding-left:15%;">
+            <a class="nav-link  " href="{{ route('admin.mutasikeluar.new') }} style="padding-left:15%;">
             <i class="fas fa-history" class="ni text-blue"></i> Laporan Mutasi Stok Keluar
             </a>
           </li>    
@@ -233,7 +233,7 @@
               <div class="media align-items-center">
                 
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <a href="/logout" class="mb-0 text-white d-none d-lg-inline-block">Logout</a>
+                  <a href="{{ route('admin.logout') }}" class="mb-0 text-white d-none d-lg-inline-block">Logout</a>
                 </div>
               </div>            
         </ul>

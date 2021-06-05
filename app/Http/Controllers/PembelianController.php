@@ -25,18 +25,7 @@ class PembelianController extends Controller
     public function pembelianAll(){
         $id_auth= auth()->id();
 
-        // mengambil seluruh data user
         $pembelians = Pembelian::with('detailPembelian')->get();
-        // dd($pembelians);
-        // $pembelians = DB::table('pembelians')
-        // ->select(
-        //     '*',
-        //     'pembelians.id AS id'
-        //     )
-        // ->leftjoin('detail_pembelians','detail_pembelians.kode_pembelian','=','pembelians.kode_pembelian')
-        // ->get();
-
-        // mengambil total data user
         $pembelians_count = DB::table('pembelians')->count();
 
         return view('table/dataPembelian', [
@@ -59,7 +48,7 @@ class PembelianController extends Controller
         $pembelian->delete();
         $detailPembelian->delete();
 
-        return redirect('/pembelian/all');
+        return redirect(route('admin.pembelian.all'));
     }
 
     //store
@@ -100,7 +89,7 @@ class PembelianController extends Controller
 
             }
 
-            return redirect('/barang/all');
+            return route('admin.pembelian.all');
         }else{
             $string = preg_replace("/[^0-9\.]/", '', $latest->kode_pembelian);
 
@@ -136,7 +125,7 @@ class PembelianController extends Controller
 
             }
 
-            return redirect('/barang/all');
+            return route('admin.pembelian.all');
 
         }
         

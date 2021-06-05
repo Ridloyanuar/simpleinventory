@@ -46,7 +46,7 @@ class PelangganController extends Controller
             $pelanggan->alamat_pelanggan = $request->alamat;
             $pelanggan->save();
 
-            return redirect('/pelanggan/all');
+            return route('admin.pelanggan.all');
         }else{
             $string = preg_replace("/[^0-9\.]/", '', $latest->kode_pelanggan);
 
@@ -59,7 +59,7 @@ class PelangganController extends Controller
             $pelanggan->alamat_pelanggan = $request->alamat;
             $pelanggan->save();
 
-            return redirect('/pelanggan/all');
+            return route('admin.pelanggan.all');
 
         }
         
@@ -85,7 +85,7 @@ class PelangganController extends Controller
             'alamat_pelanggan' => $request->alamat
         ]);
 
-        return redirect('/pelanggan/all');
+        return redirect('admin/pelanggan/all');
     }
 
     //delete
@@ -94,6 +94,6 @@ class PelangganController extends Controller
         $pelanggan = Pelanggan::findOrFail($id);
         $pelanggan->delete();
 
-        return redirect('/pelanggan/all');
+        return redirect('admin/pelanggan/all');
     }
 }
